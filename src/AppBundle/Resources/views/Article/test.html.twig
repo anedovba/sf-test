@@ -1,0 +1,13 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block body %}
+   <h1>Artiles test</h1>
+   
+   {#{{dump(article)}}#}
+   <h2>{{article.title}}</h2>
+   {{article.content|raw}}
+{% endblock %}
+
+{% block title %}
+    Hello!
+{% endblock %}
