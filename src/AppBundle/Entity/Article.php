@@ -3,9 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Entity\ArticleRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
  * @ORM\Table(name="article")
  */
 class Article
@@ -14,17 +15,25 @@ class Article
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * 
      */
     private $id;
     
     /**
      * @ORM\Column(name="title", type="string", length=100)
+     * @Assert\NotBlank(message="fill the title please")
      */
     private $title;
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="fill the content please")
      */
     private $content;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category")
+     * @Assert\NotBlank(message="fill the category please")
+     */
+    private $category;
 
     /**
      * Get id
@@ -82,5 +91,29 @@ class Article
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Article
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

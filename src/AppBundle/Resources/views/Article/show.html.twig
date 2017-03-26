@@ -1,7 +1,9 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block body %}
-   <h1>Artile {{id_twig}}</h1>
+   <h1>{{article.title}}</h1>
+   <hr>
+   {{article.content|raw}}
 {% endblock %}
 {% block title %}
     Hello!

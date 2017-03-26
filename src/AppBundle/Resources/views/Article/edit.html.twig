@@ -1,0 +1,16 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block body %}
+   <h1>Articles edit</h1>
+   
+   {{form_start(form)}}
+   {{form_widget(form)}}
+   <br>
+   <button class='btn btn-default'>Save</button>
+   {{form_end(form)}}
+ 
+{% endblock %}
+
+{% block title %}
+    Hello!
+{% endblock %}

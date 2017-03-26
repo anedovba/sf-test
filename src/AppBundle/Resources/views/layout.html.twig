@@ -50,6 +50,14 @@
     </nav>
 
     <div class="container">
+      
+      <div>
+        {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+      </div>
 
        {% block body %}{% endblock %}
 
